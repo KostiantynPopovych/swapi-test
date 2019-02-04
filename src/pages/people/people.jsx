@@ -6,7 +6,7 @@ import './people.scss';
 
 import Person from '../../components/person';
 
-import { fetchPeople } from '../../actions/people';
+import { fetchPeople, fetchPeopleBySearch } from '../../actions/people';
 
 import { getIdFromUrl } from '../../helpers/getId';
 
@@ -16,12 +16,12 @@ const mapStateToProps = ({ people }) => ({
 
 const mapDispatchToProps = {
     dispatchFetchPeople: fetchPeople,
+    dispatchFetchPeopleBySearch: fetchPeopleBySearch,
 };
 
 class PostsPage extends Component {
     state = {
         value: '',
-        list: [],
     }
 
     static defaultProps = {
@@ -34,21 +34,15 @@ class PostsPage extends Component {
         document.title = this.props.title; 
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.people.list !== prevProps.people.list) {
-            const { list } = this.props.people;
-            this.setState({ list });
-        };
-    }
-
-    handleChange = inputValue => {
-        const { people: { list } } = this.props;
-        const newList = list.filter(e => e.name.toLowerCase().includes(inputValue.toLowerCase()));
-        this.setState({ list: newList, value: inputValue });
+    handleChange = value => {
+        const { dispatchFetchPeopleBySearch } = this.props;
+        dispatchFetchPeopleBySearch(value);
+        this.setState({ value });
     }
     
     render() {
-        const { list, value } = this.state;
+        const { value } = this.state;
+        const { people } = this.props;
 
         return (
             <div className="people-container">
@@ -62,7 +56,7 @@ class PostsPage extends Component {
                 </div>
                 <ul>
                     {
-                        list.slice(0,9).map((item, idx) => (
+                        people.list.slice(0, 9).map((item, idx) => (
                             <Person 
                                 id={ item.id } 
                                 name={ item.name }

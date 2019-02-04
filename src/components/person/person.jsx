@@ -8,6 +8,7 @@ import './person.scss';
 
 class Person extends PureComponent {
     render() {
+        const randomId = Math.floor(Math.random() * 10);
         const { name, birthYear, urlId } =this.props;
 
         return (
@@ -19,7 +20,7 @@ class Person extends PureComponent {
                         transitionAppear={true}
                         transitionAppearTimeout={500}>
                     <Link to={`/person/${urlId}`}>
-                        <img src={require(`../../assets/img/list-items/${urlId}.jpg`)} alt="person" />
+                        <img src={require(`../../assets/img/list-items/${randomId}.jpg`)} alt="person" />
                         <FontAwesomeIcon icon="arrow-right"/>
                         <span className="person-info">
                             <span className="person-info-title">

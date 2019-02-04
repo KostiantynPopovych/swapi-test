@@ -14,15 +14,6 @@ class API {
     get = async (uri, options) =>
         this.api('get', this.getUrl(uri), null, options);
 
-    put = async (uri, data, options) =>
-        this.api('put', this.getUrl(uri), data, options);
-
-    post = async (uri, data, options) =>
-        this.api('post', this.getUrl(uri), data, options);
-
-    delete = async (uri, options) =>
-        this.api('delete', this.getUrl(uri), null, options);
-
     api = async (method, url, data, options = {}) => {
         const allOptions = this.getHeaders(options);
 
