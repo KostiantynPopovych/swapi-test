@@ -1,0 +1,108 @@
+.person-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 150px;
+
+    @media (min-width: 576px){
+        max-width: 540px;
+    }
+
+    @media (min-width: 768px){
+        max-width: 720px;
+    }
+    
+    @media (min-width: 992px){
+        max-width: 960px;
+    }
+
+    @media (min-width: 1200px){
+        max-width: 1140px;
+    }
+
+    .person-container-about {
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+        flex-flow: column;
+        display: flex;
+
+        .person-container-texts{
+            border-radius: .4rem;
+            margin: -4rem 3rem 3rem 3rem;
+            padding: 3rem;
+            background-color: #000;
+            box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.1);
+
+            .person-container-texts-title {
+                margin: 0 auto 3rem;
+                text-align: center;
+                font-size: 2.4rem;
+                letter-spacing: -.1rem;
+                line-height: 3.8rem;
+                text-transform: capitalize;
+                color: #fff;
+                margin-bottom: 2rem
+            }
+
+            .person-container-texts-body {
+                color: #727f88;
+                font-size: 2rem;
+                display: flex;
+                padding: 0 10px;
+            }
+
+            @media (max-width: 720px) {
+                margin: 0;
+                background-color: #141415;;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .form-container {
+        padding: .8rem;
+        background-color: #000;
+        border: 10px solid #222;
+    }
+
+    .comments-container {
+        margin-bottom: 100px;
+    }
+
+    @media (max-width: 720px) {
+        margin-bottom: 250px;
+    }
+
+}
+
+.person-enter {
+    opacity: 0.01;
+}
+  
+.person-enter.person-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+  
+.person-leave {
+    opacity: 1;
+}
+  
+.person-leave.person-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.person-appear {
+    opacity: 0.01;
+}
+  
+.person-appear.person-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}

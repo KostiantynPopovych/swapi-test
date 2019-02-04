@@ -1,0 +1,164 @@
+.navbar {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+
+    @media (min-width: 576px){
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+        padding-top: 2.4rem;
+        padding-bottom: 2.4rem;
+    }
+    
+    .navbar-container {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+        @media (min-width: 576px){
+            max-width: 540px;
+        }
+
+        @media (min-width: 768px){
+            max-width: 720px;
+        }
+
+        @media (min-width: 992px) {
+            max-width: 960px;
+        }
+
+        @media (min-width: 1200px){
+            max-width: 1140px;
+        }        
+
+        .navbar-container-iner {
+            display: table;
+            width: 100%;
+
+
+            @media (max-width: 720px) {
+                display: flex;
+                flex-flow: column;
+            }
+
+            .navbar-container-iner-logo {
+                display: table-cell;
+                vertical-align: middle;
+                position: relative;
+
+                a {
+                    padding-left: 1.75rem;
+                }
+
+                img {
+                    height: 50px;
+                    width: 50px;
+                }
+
+                @media (max-width: 720px) { 
+                    margin-left: 2rem;
+                }
+
+                .navbar-container-iner-menu {
+                    cursor: pointer;
+                    display: none;
+
+                    @media (max-width: 720px) {  
+                        color: #727f88;
+                        display: block;
+                        position: absolute;
+                        width: 2rem;
+                        height: 2rem;
+                        top: 50%;
+                        right: 3.75rem;
+                        margin-top: -1rem;
+                        font-size: 1.7rem;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .navbar-container-inner-navs {
+                display: table-cell;
+                vertical-align: middle;
+
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+                    margin-bottom: 0;
+                    text-align: right;
+
+                    @media (max-width: 720px) {
+                        padding-top: 20px;
+                        display: none;
+                        flex-flow: column;
+                        text-align: center;
+                    }
+
+                    li {
+                        display: inline-block;
+                        margin-left: 0;
+
+                        @media (max-width: 720px) {
+                            line-height: 50px;
+                            border-top: 1px solid #242424;
+                            background-color: #000;
+                            
+                            &:last-child {
+                                border-bottom: 1px solid #242424;
+                            }
+
+                            &:hover {
+                                background-color: #242424;
+                            }
+                        }
+
+                        a {
+                            padding-left: 1.75rem;
+                            padding-right: 1.75rem;
+                            text-decoration: none;
+                            font-size: 28px;
+                            color: #fff;
+                            text-transform: capitalize;
+
+                            &:hover {
+                                color: #00ffff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.navs-enter {
+    opacity: 0.01;
+}
+  
+.navs-enter.navs-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+  
+.navs-leave {
+    opacity: 1;
+}
+  
+.navs-leave.navs-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.navs-appear {
+    opacity: 0.01;
+}
+  
+.navs-appear.navs-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}
