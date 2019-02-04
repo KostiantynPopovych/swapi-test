@@ -5,11 +5,11 @@ import { BrowserRouter as Router ,Route, Switch, Redirect } from 'react-router-d
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-import store from '../../helpers/configure-store';
+import store from './helpers/configure-store';
 
-import People from '../people-page';
-import PersonPage from '../person-page';
-import Navigation from '../../components/header';
+import People from './pages/people';
+import PersonPage from './pages/person';
+import Navigation from './components/header';
 
 library.add(fas);
 

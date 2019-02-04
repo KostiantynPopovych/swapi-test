@@ -1,48 +1,28 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
-
-import { rootURL } from '../helpers/api';
-import { 
-    FETCH_POSTS_START,
-    FETCH_POST_START,
-} from '../store/people/actionTypes';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import Api from '../helpers/api';
 
 import { 
-    fetchPostsSuccess, 
-    fetchPostsFailure,
-    fetchPostSuccess, 
-    fetchPostFailure,
-} from '../store/people/actionCreators'
+    FETCH_PEOPLE_START,
+} from '../constants/actionTypes/people';
 
-export function* watchFetchPosts() {
-    yield takeLatest(FETCH_POSTS_START, fetchPostsList);
-};
+import { PEOPLE } from '../constants/api';
 
-export function* watchFetchPost() {
-    yield takeEvery(FETCH_POST_START, fetchPostList);
-};
+import { 
+    fetchPeopleSuccess, 
+    fetchPeopleFailure,
+} from '../actions/people';
 
 function* fetchPostsList() {
-    const url = `${rootURL}/people`;
-
     try {
-        const response = yield call(axios.get, url);        
-        const people = response.data;
+        const response = yield call(Api.get, PEOPLE);        
+        const people = response.data.results;
 
-        yield put(fetchPostsSuccess(people));
+        yield put(fetchPeopleSuccess(people));
     } catch(err) {
-        yield put(fetchPostsFailure());
+        yield put(fetchPeopleFailure());
     }
-} 
+};
 
-function* fetchPostList({payload}) {
-    const url = `${rootURL}/people/${payload}`;
-
-    try {
-        const response = yield call(axios.get, url);  
-        const person = response.data; 
-        yield put(fetchPostSuccess(person));
-    } catch(err) {
-        yield put(fetchPostFailure());
-    }
-} 
+export default function* watchFetchPosts() {
+    yield takeEvery(FETCH_PEOPLE_START, fetchPostsList);
+};

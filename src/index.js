@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 
 import './index.scss';
 
-import Root from './containers/root';
+import Root from './root';
 
 ReactDOM.render(<Root />, document.getElementById('root'));

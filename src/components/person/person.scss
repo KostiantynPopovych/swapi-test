@@ -1,0 +1,111 @@
+.person {
+    list-style: none;
+    position: relative;
+
+    img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+        box-shadow: 0 20px 40px 0 rgba(0, 255, 255, 0.2);
+
+        @media (max-width: 900px) {
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
+        }
+    }        
+
+    svg {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #00ffff;
+        transition: .3s opacity, .3s left;
+        opacity: 0;
+
+        @media (max-width: 900px) {
+            opacity: 1;
+        }
+    }
+
+    .person-img--big {
+        height: 500px;
+    }
+
+    .person-info {
+        visibility: hidden;
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
+        padding: 2rem 2.5rem;
+
+        .person-info-title {
+            display: block;
+            font-family: 'Merriweather', sans-serif;
+            font-size: 1.4rem;
+            line-height: 2.2rem;
+            color: #fff;
+        }
+
+        .person-info-description {
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+            color: #727f88;
+        }
+
+        @media (max-width: 900px) {
+            visibility: visible;
+        }
+    }
+
+    &:hover {
+        img {
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
+            background: #000;
+            opacity: 0.2;
+            transition: all 300ms ease;
+
+            @media (max-width: 900px) {
+                opacity: 1;
+                background: initial;
+            }
+        }
+
+        svg {
+            opacity: 1;
+        }
+
+        .person-info {
+            visibility: visible;
+        } 
+    }  
+}
+
+.people-enter {
+    opacity: 0.01;
+}
+  
+.people-enter.people-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+  
+.people-leave {
+    opacity: 1;
+}
+  
+.people-leave.people-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.people-appear {
+    opacity: 0.01;
+}
+  
+.people-appear.people-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}

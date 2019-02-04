@@ -1,13 +1,13 @@
-import { fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 
-import { 
-    watchFetchPosts,
-    watchFetchPost,
-} from './people';
+import People from './people';
+import Person from './person';
 
-export default function * () {
-    yield [
-        fork(watchFetchPosts),
-        fork(watchFetchPost),
-    ];
-}
+const sagas = [
+    People,
+    Person,
+];
+
+export default function* root() {
+    yield all(sagas.map(saga => fork(saga)));
+};

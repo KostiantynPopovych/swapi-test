@@ -14,7 +14,7 @@ class Header extends Component {
                     <div className="navbar-container-iner">
                         <div className="navbar-container-iner-logo">
                             <Link to='/people'> 
-                                <img src={logo} alt="Logo" /> 
+                                <img src={ logo } alt="Logo" /> 
                             </Link>
                         </div>
                     </div>
