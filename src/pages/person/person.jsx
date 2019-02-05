@@ -5,6 +5,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { fetchPerson } from '../../actions/person';
 
+import Loader from '../../components/loader';
+
 import './person.scss';
 
 class PostPage extends Component {
@@ -32,11 +34,17 @@ class PostPage extends Component {
           transitionAppearTimeout={500}
         >
           <div className="person-container-about">
-            <img src={require(`../../assets/img/list-items/${+match.params.id}.jpg`)} alt="person" />
-            <div className="person-container-texts">
-              {
-                !person.loading && 
-                  <>
+            {
+              person.loading && 
+                <Loader />
+            }
+              
+                
+            {
+              !person.loading && 
+                <>
+                  <img src={require(`../../assets/img/list-items/${+match.params.id}.jpg`)} alt="person" />
+                  <div className="person-container-texts">
                     <p className="person-container-texts-title">{ person.name }</p>
                     <p className="person-container-texts-body">Birth year: { person.birth_year }</p>
                     <p className="person-container-texts-body">Gender: { person.gender }</p>
@@ -50,7 +58,7 @@ class PostPage extends Component {
                     }
                     {
                       person.species.length &&
-                       <p className="person-container-texts-body">Species: { person.species }</p>
+                      <p className="person-container-texts-body">Species: { person.species }</p>
                     }
                     {
                       person.starships.length && 
@@ -60,9 +68,9 @@ class PostPage extends Component {
                       person.vehicles.length && 
                         <p className="person-container-texts-body">Vehicles: { person.vehicles }</p>
                     }
-                  </>
-              }
-            </div>
+                  </div>
+                </>
+            }
           </div>
         </ReactCSSTransitionGroup>
       </div>
