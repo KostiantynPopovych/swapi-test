@@ -22,6 +22,7 @@ class PostPage extends Component {
   }
 
   render() {
+    const randomId = Math.floor(Math.random() * 10);
     const { person, match } = this.props;
 
     return (
@@ -43,7 +44,7 @@ class PostPage extends Component {
             {
               !person.loading && 
                 <>
-                  <img src={require(`../../assets/img/list-items/${+match.params.id}.jpg`)} alt="person" />
+                  <img src={require(`../../assets/img/list-items/${randomId}.jpg`)} alt="person" />
                   <div className="person-container-texts">
                     <p className="person-container-texts-title">{ person.name }</p>
                     <p className="person-container-texts-body">Birth year: { person.birth_year }</p>
